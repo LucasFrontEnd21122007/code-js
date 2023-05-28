@@ -1,0 +1,38 @@
+// Exemplo de chatbot básico em JavaScript
+
+// Função para processar a entrada do usuário e retornar uma resposta
+function processarEntrada(entrada) {
+    entrada = entrada.toLowerCase();
+  
+    // Verificar a entrada do usuário e retornar uma resposta adequada
+    if (entrada.includes('olá')) {
+      return 'Olá! Como posso ajudar?';
+    } else if (entrada.includes('tempo')) {
+      return 'O tempo está bom hoje.';
+    } else if (entrada.includes('ajuda')) {
+      return 'Estou aqui para ajudar. O que você precisa?';
+    } else {
+      return 'Desculpe, não entendi o que você disse. Poderia repetir?';
+    }
+  }
+  
+  // Função para exibir a resposta do chatbot na tela
+  function exibirResposta(resposta) {
+    var respostaContainer = document.getElementById('resposta');
+    respostaContainer.innerHTML = resposta;
+  }
+  
+  // Função para lidar com o envio do formulário
+  function handleSubmit(event) {
+    event.preventDefault();
+    var input = document.getElementById('entrada');
+    var entrada = input.value;
+    input.value = '';
+  
+    var resposta = processarEntrada(entrada);
+    exibirResposta(resposta);
+  }
+  
+  // Adicionar um evento de envio ao formulário
+  var form = document.getElementById('chatbot-form');
+  form.addEventListener('submit', handleSubmit);
